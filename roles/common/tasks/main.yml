@@ -1,11 +1,9 @@
 ---
 - name: Update apt cache
-  sudo: yes
   apt:
     update_cache: yes
 
 - name: Install mksh
-  sudo: yes
   apt:
     name: mksh
     state: present
