@@ -17,7 +17,7 @@
   register: locale-archive
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
-  when: localegen.changed or !locale-archive.stat.exists
+  when: localegen.changed or not locale-archive.stat.exists
 
 - name: Install mksh
   apt:
