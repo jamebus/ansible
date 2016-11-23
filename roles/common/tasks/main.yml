@@ -5,6 +5,12 @@
     name: locales
     state: present
 
+- name: Update locale-gen configuration
+  lineinfile:
+    dest: /etc/locale.gen
+    regexp: ^# en_US\.UTF-8 UTF-8$
+    line: en_US.UTF-8 UTF-8
+
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
   args:
