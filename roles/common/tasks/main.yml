@@ -10,6 +10,7 @@
     dest: /etc/locale.gen
     regexp: ^# en_US\.UTF-8 UTF-8$
     line: en_US.UTF-8 UTF-8
+    backrefs: yes
 
 # TODO: test if config is newer than this
 - name: Generate en_US.UTF-8 locale
