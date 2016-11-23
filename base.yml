@@ -1,4 +1,5 @@
 ---
 - name: Base configuration
+  hosts: all
   roles:
     - common
