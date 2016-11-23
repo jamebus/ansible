@@ -13,9 +13,11 @@
     backrefs: yes
   register: localegen
 
+- stat: path=/usr/lib/locale/locale-archive
+  register: locale-archive
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
-  when: localegen.changed
+  when: localegen.changed or !locale-archive.stat.exists
 
 - name: Install mksh
   apt:
