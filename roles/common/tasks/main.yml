@@ -1,9 +1,6 @@
 ---
-- name: Update apt cache
-  apt:
-    update_cache: yes
-
 - name: Install mksh
   apt:
+    update-cache: yes
     name: mksh
     state: present
