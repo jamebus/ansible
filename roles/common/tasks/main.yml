@@ -8,7 +8,7 @@
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
   args:
-    creates: /usr/lib/locale/en_US.UTF-8
+    creates: /usr/lib/locale/locale-archive
 
 - name: Install mksh
   apt:
