@@ -13,11 +13,8 @@
     backrefs: yes
   register: localegen
 
-# TODO: test if config is newer than this
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
-  args:
-    creates: /usr/lib/locale/locale-archive
   when: localegen.changed
 
 - name: Install mksh
