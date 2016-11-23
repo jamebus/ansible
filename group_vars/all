@@ -1,2 +1,2 @@
-primary_user=bus
-primary_user_uid=1000
+primary_user: bus
+primary_user_uid: 1000
