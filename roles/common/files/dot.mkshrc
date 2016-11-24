@@ -1,0 +1,50 @@
+#
+# ~/.mkshrc -- rc for interactive shells
+#
+
+export LS_OPTIONS='--color=auto'
+eval $(dircolors -b)
+alias ls='ls $LS_OPTIONS'
+alias ll='ls $LS_OPTIONS -l'
+alias l='ls $LS_OPTIONS -lA'
+export RI='-Tf ansi'
+alias grep='grep --color=auto'
+LESS_TERMCAP_mb=$(tput setaf 2) # green
+LESS_TERMCAP_md=$(tput bold; tput setaf 4) # blue
+LESS_TERMCAP_me=$(tput sgr0)
+LESS_TERMCAP_so=$(tput bold; tput setaf 7; tput setab 4) # white on blue
+LESS_TERMCAP_se=$(tput rmso; tput sgr0)                  # reset previous line
+LESS_TERMCAP_us=$(tput smul; tput bold)                  # underlined and bold
+LESS_TERMCAP_ue=$(tput rmul; tput sgr0)
+LESS_TERMCAP_mr=$(tput rev)
+LESS_TERMCAP_mh=$(tput dim)
+LESS_TERMCAP_ZN=$(tput ssubm)
+LESS_TERMCAP_ZV=$(tput rsubm)
+LESS_TERMCAP_ZO=$(tput ssupm)
+LESS_TERMCAP_ZW=$(tput rsupm)
+export LESS_TERMCAP_mb LESS_TERMCAP_md LESS_TERMCAP_me LESS_TERMCAP_so \
+       LESS_TERMCAP_se LESS_TERMCAP_us LESS_TERMCAP_ue LESS_TERMCAP_mr \
+       LESS_TERMCAP_mh LESS_TERMCAP_ZN LESS_TERMCAP_ZV LESS_TERMCAP_ZO \
+       LESS_TERMCAP_ZW
+
+test -x /usr/bin/lesspipe && eval "$(lesspipe)"
+
+[[ -n $PWD && $(realpath ~) = $PWD && ~ != $PWD ]] && cd ~
+PERRSTR='|'
+PS1='$'
+PS1=$'\001\r''($(ulimit -c 0; umask 2>/dev/null || echo \?
+    )) $(local e=$?; (( e )) && echo "$e$PERRSTR"
+    )${USER:=$(ulimit -c 0; id -un 2>/dev/null || echo \?
+    )}@${HOSTNAME:=$(ulimit -c 0; hostname -s 2>/dev/null || echo \?
+    )}:$(local d=${PWD:-?} p=~; [[ $p = ?(*/) ]] || \
+    d=${d/#$p/~}; local m=${%d} n p=...; (( m > 0 )) || m=${#d}
+    (( m > (n = (COLUMNS/3 < 7 ? 7 : COLUMNS/3)) )) && d=${d:(-n)} || \
+    p=; print -nr -- "$p$d") '"$PS1 "
+
+p=$'\001'
+[[ -z ${debian_chroot:-} && -r /etc/debian_chroot ]] && \
+    debian_chroot=$(</etc/debian_chroot)
+PS1=$p$'\r${debian_chroot:+'$p$'\e[0;1m'$p'($debian_chroot)'$p$'\e[0m'$p'}'$PS1
+unset p
+
+# vim:ft=sh
