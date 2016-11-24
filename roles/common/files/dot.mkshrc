@@ -31,7 +31,7 @@ test -x /usr/bin/lesspipe && eval "$(lesspipe)"
 
 [[ -n $PWD && $(realpath ~) = $PWD && ~ != $PWD ]] && cd ~
 PERRSTR='|'
-PS1='$'
+if (( USER_ID )); then PS1='$'; else PS1='#'; fi
 PS1=$'\001\r''($(ulimit -c 0; umask 2>/dev/null || echo \?
     )) $(local e=$?; (( e )) && echo "$e$PERRSTR"
     )${USER:=$(ulimit -c 0; id -un 2>/dev/null || echo \?
