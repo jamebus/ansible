@@ -14,11 +14,11 @@
   register: localegen
 
 - stat: path=/usr/lib/locale/locale-archive
-  register: locale-archive
-  
+  register: localearchive
+
 - name: Generate en_US.UTF-8 locale
   command: locale-gen --lang en_US.UTF-8
-  when: not locale-archive.stat.exists
+  when: not localearchive.stat.exists
 #  when: localegen.changed or (not locale-archive.stat.exists)
 
 - name: Install mksh
