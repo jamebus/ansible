@@ -42,6 +42,12 @@ PS1=$'\001\r''($(ulimit -c 0; umask 2>/dev/null || echo \?
     p=; print -nr -- "$p$d") '"$PS1 "
 
 p=$'\001'
+if [[ ${PS1:1:1} = $'\r' ]]; then
+	p=${PS1:0:1}
+	PS1=${PS1:2}
+else
+	p=$'\001'
+fi
 [[ -z ${debian_chroot:-} && -r /etc/debian_chroot ]] && \
     debian_chroot=$(</etc/debian_chroot)
 PS1=$p$'\r${debian_chroot:+'$p$'\e[0;1m'$p'($debian_chroot)'$p$'\e[0m'$p'}'$PS1
