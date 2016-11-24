@@ -1,2 +1,3 @@
 primary_user: bus
 primary_user_uid: 1000
+xserver_dpi: 150
