@@ -32,5 +32,6 @@
     - .bash_profile
     - .bashrc
     - .bash_history
+    - .bash_logout
   sudo: yes
   sudo_user: {{ primary_user }}
