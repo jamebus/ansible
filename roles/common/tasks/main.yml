@@ -83,3 +83,34 @@
     update-cache: yes
     name: less
     state: present
+
+- name: Install mtr-tiny
+  apt:
+    update-cache: yes
+    name: mtr-tiny
+    state: present
+
+- name: Install whois
+  apt:
+    update-cache: yes
+    name: whois
+    state: present
+
+- name: Install unbound-host
+  apt:
+    update-cache: yes
+    name: unbound-host
+    state: present
+
+- stat: path=/usr/bin/host
+  register: host
+
+- name: Use unbound-host(1) as host(1)
+  command: 	update-alternatives --install /usr/bin/host host /usr/bin/unbound-host 100 slave /usr/share/man/man1/host.1.gz host.1.gz /usr/share/man/man1/unbound-host.1.gz
+  when: host.stat.lnk_source == "/usr/bin/unbound-host"
+
+- name: Install drill
+  apt:
+    update-cache: yes
+    name: ldnsutils
+    state: present
