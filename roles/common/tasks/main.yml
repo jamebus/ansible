@@ -29,6 +29,9 @@
   command: cp /etc/crouton/xserverrc-local.example /etc/crouton/xserverrc-local
   when: xserverrclocalexample.stat.exists and not xserverrclocal.stat.exists
 
+- stat: path=/etc/crouton/xserverrc-local
+  register: xserverrclocal
+
 - name: Adjust DPI of xserver
   lineinfile:
     dest: /etc/crouton/xserverrc-local
