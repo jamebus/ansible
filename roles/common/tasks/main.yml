@@ -22,13 +22,12 @@
 
 - stat: path=/etc/crouton/xserverrc-local.example
   register: xserverrclocalexample
+- stat: path=/etc/crouton/xserverrc-local
+  register: xserverrclocal
 
 - name: Copy xserverrc-local.example
   command: cp /etc/crouton/xserverrc-local.example /etc/crouton/xserverrc-local
-  when: not xserverrclocalexample.stat.exists
-
-- stat: path=/etc/crouton/xserverrc-local
-  register: xserverrclocal
+  when: xserverrclocalexample.stat.exists and not xserverrclocal.stat.exists
 
 - name: Adjust DPI of xserver
   lineinfile:
