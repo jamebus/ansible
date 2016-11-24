@@ -35,7 +35,7 @@
 - name: Adjust DPI of xserver
   lineinfile:
     dest: /etc/crouton/xserverrc-local
-    regexp: ^#?XARGS="$XARGS\w+-dpi\w+
+    regexp: ^#?XARGS="$XARGS\s+-dpi\s+
     line: XARGS="$XARGS -dpi {{ xserver_dpi }}x{{ xserver_dpi }}"
   when: xserverrclocal.stat.exists
 
