@@ -25,3 +25,10 @@
     update-cache: yes
     name: mksh
     state: present
+
+- name: Remove BASH configuration
+  file: path=~/{{item}} state=absent
+  with_items:
+    - .bash_profile
+    - .bashrc
+    - .bash_history
