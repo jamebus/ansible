@@ -71,3 +71,15 @@
     - { src: 'dot.mkshrc', dest: '.mkshrc' }
   sudo: yes
   sudo_user: "{{ primary_user }}"
+
+- name: Install vim
+  apt:
+    update-cache: yes
+    name: vim
+    state: present
+
+- name: Install less
+  apt:
+    update-cache: yes
+    name: less
+    state: present
