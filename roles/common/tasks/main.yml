@@ -104,10 +104,15 @@
 
 - stat: path=/etc/alternatives/host
   register: hostalternative
+- stat: path=/usr/bin/host
+  register: binhost
 
 - name: Fix errant host(1) alternative
-  command: update-alternatives --auto host
-  when: hostalternative.stat.exists and hostalternative.stat.lnk_source != '/usr/bin/unbound-host'
+  command: rm -f /usr/bin/host /etc/alternatives/host /usr/share/man/man1/host.1.gz /etc/alternatives/host.1.gz
+  when: (hostalternative.stat.exists and hostalternative.stat.lnk_source != '/usr/bin/unbound-host') or (binhost.stat.exists and not binhost.stat.islnk)
+
+- stat: path=/etc/alternatives/host
+  register: hostalternative
 
 - name: Use unbound-host(1) as host(1)
   command: update-alternatives --install /usr/bin/host host /usr/bin/unbound-host 100 --slave /usr/share/man/man1/host.1.gz host.1.gz /usr/share/man/man1/unbound-host.1.gz
