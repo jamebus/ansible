@@ -5,6 +5,8 @@
 
 : ${LANG:='en_US.UTF-8'}
 export LANG
+LC_COLLATE='POSIX'
+export LC_COLLATE
 
 EDITOR=vim
 VISUAL=vim
