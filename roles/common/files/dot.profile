@@ -29,8 +29,8 @@ PERL5LIB="${HOME}/lib/perl5"
 export PERL5LIB
 
 if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
-    export PATH
+	PATH=~/bin:"${PATH}"
+	export PATH
 fi
 
 # vim:ft=sh
