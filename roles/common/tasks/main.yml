@@ -102,12 +102,12 @@
     name: unbound-host
     state: present
 
-- stat: path=/usr/bin/host
+- stat: path=/etc/alternatives/host
   register: host
 
 - name: Use unbound-host(1) as host(1)
   command: update-alternatives --install /usr/bin/host host /usr/bin/unbound-host 100 slave /usr/share/man/man1/host.1.gz host.1.gz /usr/share/man/man1/unbound-host.1.gz
-  when: host.stat.lnk_source == "/usr/bin/unbound-host"
+  when: host.stat.lnk_source != "/usr/bin/unbound-host"
 
 - name: Install drill
   apt:
