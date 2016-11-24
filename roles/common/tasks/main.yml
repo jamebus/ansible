@@ -35,3 +35,6 @@
     - .bash_logout
   sudo: yes
   sudo_user: "{{ primary_user }}"
+
+- name: Set shell of primary user
+  user: name="{{ primary_user }}" shell=/bin/mksh
