@@ -105,7 +105,7 @@
 - stat: path=/etc/alternatives/host
   register: hostalternative
 
-- debug: msg="XXX: {{ hostalternative.stat.lnk_source }}"
+- debug: msg=DEBUG: "{{ hostalternative.stat.lnk_source }}"
 
 - name: Use unbound-host(1) as host(1)
   command: update-alternatives --install /usr/bin/host host /usr/bin/unbound-host 100 slave /usr/share/man/man1/host.1.gz host.1.gz /usr/share/man/man1/unbound-host.1.gz
