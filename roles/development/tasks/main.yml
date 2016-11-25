@@ -14,5 +14,4 @@
 - name: Install Atom
   apt:
     deb: https://atom.io/download/deb
-    name: atom
     state: installed
