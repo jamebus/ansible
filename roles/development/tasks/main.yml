@@ -1,1 +1,6 @@
 ---
+- name: Add projects share
+  lineinfile:
+    dest: /etc/crouton/shares
+    regexp: ^encrypted/projects ~/projects$
+    line: encrypted/projects ~/projects
