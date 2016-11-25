@@ -78,6 +78,14 @@
     name: vim
     state: present
 
+- name: Install vim configuration
+  copy: src={{ item.src }} dest=~/{{ item.dest }}
+  with_items:
+    - { src: 'dot.vimrc', dest: '.vimrc' }
+    - { src: 'dot.vim', dest: '.vim' }
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
+
 - name: Install less
   apt:
     update-cache: yes
