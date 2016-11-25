@@ -4,3 +4,14 @@
     dest: /etc/crouton/shares
     regexp: ^encrypted/projects ~/projects$
     line: encrypted/projects ~/projects
+
+- name: Install libxss1 (missing from Atom's dependencies)
+  apt:
+    update-cache: yes
+    name: libxss1
+    state: present
+
+- name: Install Atom
+  apt:
+    deb: https://atom.io/download/deb
+    state: present
