@@ -14,7 +14,7 @@
 - name: Check if Atom is installed
   command: dpkg-query -l atom
   register: atom_installed
-  changed-when: false
+  changed_when: false
   ignore_errors: yes
 
 - name: Download Atom
