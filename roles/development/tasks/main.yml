@@ -7,6 +7,8 @@
 
 - name: Configure git
   command: git config --global push.default simple
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
 
 - name: Install libxss1 (missing from Atom's dependencies)
   apt:
