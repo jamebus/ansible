@@ -5,12 +5,6 @@
     regexp: ^encrypted/projects ~/projects$
     line: encrypted/projects ~/projects
 
-- name: Install ca-certificates (needed for get_url)
-  apt:
-    update-cache: yes
-    name: ca-certificates
-    state: present
-
 - name: Install libxss1 (missing from Atom's dependencies)
   apt:
     update-cache: yes
