@@ -20,4 +20,4 @@
   get_url:
     url: https://atom.io/download/deb
     dest: /tmp/atom.deb
-  when: atom_installed.stdout.find('no packages found') != -1
+  when: atom_installed.stderr.find('no packages found') != -1
