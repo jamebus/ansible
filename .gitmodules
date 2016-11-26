@@ -1,0 +1,3 @@
+[submodule "roles/tmpdir"]
+	path = roles/tmpdir
+	url = https://github.com/mdklatt/ansible-tmpdir-role.git
