@@ -5,6 +5,9 @@
     regexp: ^encrypted/projects ~/projects$
     line: encrypted/projects ~/projects
 
+- name: Configure git
+  command: git config --global push.default simple
+
 - name: Install libxss1 (missing from Atom's dependencies)
   apt:
     update-cache: yes
