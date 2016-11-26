@@ -5,6 +5,7 @@
     regexp: ^encrypted/projects ~/projects$
     line: encrypted/projects ~/projects
 
+# TODO: Make this not cause a change every time
 - name: Configure git
   command: git config --global push.default simple
   sudo: yes
