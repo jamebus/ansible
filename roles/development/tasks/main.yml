@@ -18,5 +18,5 @@
 - name: Download Atom
   get_url:
     url: https://atom.io/download/deb
-    dest: "{{ tmpdir_path }}/atom.deb"
+    dest: /tmp/atom.deb
   when: atom_installed.stdout.find('no packages found') != -1
