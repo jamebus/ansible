@@ -4,5 +4,4 @@
 - name: Development environment
   hosts: all
   roles:
-    - tmpdir
     - development
