@@ -11,7 +11,12 @@
     name: libxss1
     state: present
 
-- name: Install Atom
-  apt:
-    deb: https://atom.io/download/deb
-    state: installed
+- name: Check if Atom is installed
+  command: dpkg-query -l atom
+  register: atom_installed
+
+- name: Download Atom
+  get_url:
+    url: https://atom.io/download/deb
+    dest: "{{ tmpdir_path }}/atom.deb"
+  when: atom_installed.stdout.find('no packages found') != -1
