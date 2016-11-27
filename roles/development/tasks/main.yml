@@ -42,3 +42,15 @@
 - name: Install Atom
   apt: deb=/tmp/atom.deb
   when: atom_installed.stderr.find('no packages found') != -1
+
+- name: Install Atom packages
+  command: apm install {{ item }}
+  creates: ~/.atom/packages/{{ item }}
+  with_items:
+    - auto-detect-indentation
+    - highlight-selected
+    - minimap
+    - open-recent
+    - todo-show
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
