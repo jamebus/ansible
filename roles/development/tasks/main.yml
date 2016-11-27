@@ -40,4 +40,5 @@
   when: atom_installed.stderr.find('no packages found') != -1
 
 - name: Install Atom
-    apt: deb=/tmp/atom.deb
+  apt: deb=/tmp/atom.deb
+  when: atom_installed.stderr.find('no packages found') != -1
