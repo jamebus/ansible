@@ -77,3 +77,11 @@
   with_items:
     - httpie
     - jq
+
+- name: Source control tools
+  apt:
+    update-cache: yes
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - subversion
