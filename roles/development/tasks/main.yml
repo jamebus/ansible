@@ -78,7 +78,7 @@
     - httpie
     - jq
 
-- name: Source control tools
+- name: Install source control tools
   apt:
     update-cache: yes
     name: "{{ item }}"
