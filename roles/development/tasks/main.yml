@@ -58,3 +58,20 @@
   copy: src=config.cson dest=~/.atom/config.cson
   sudo: yes
   sudo_user: "{{ primary_user }}"
+
+- name: Install programming languages
+  apt:
+    update-cache: yes
+    name: {{ item }}
+    state: present
+  with_items:
+    - ruby
+
+- name: Install tools
+  apt:
+    update-cache: yes
+    name: {{ item }}
+    state: present
+  with_items:
+    - httpie
+    - jq
