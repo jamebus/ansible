@@ -38,3 +38,6 @@
   # SNI, causing the download to fail
   command: wget -nv -O /tmp/atom.deb https://atom.io/download/deb
   when: atom_installed.stderr.find('no packages found') != -1
+
+- name: Install Atom
+    apt: deb=/tmp/atom.deb
