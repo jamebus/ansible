@@ -62,7 +62,7 @@
 - name: Install programming languages
   apt:
     update-cache: yes
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items:
     - ruby
@@ -70,7 +70,7 @@
 - name: Install tools
   apt:
     update-cache: yes
-    name: {{ item }}
+    name: "{{ item }}"
     state: present
   with_items:
     - httpie
