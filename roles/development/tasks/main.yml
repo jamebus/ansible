@@ -85,3 +85,4 @@
     state: present
   with_items:
     - subversion
+    - gitg
