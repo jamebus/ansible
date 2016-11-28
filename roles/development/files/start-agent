@@ -4,7 +4,7 @@
 
 if [ -z "$SSH_AGENT_PID" ]; then
 	eval $(ssh-agent -s)
-	for f in *.pub; do
+	for f in ~/.ssh/*.pub; do
 		ssh-add "${f%.pub}"
 	done
 fi
