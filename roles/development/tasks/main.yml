@@ -148,6 +148,16 @@
   sudo_user: "{{ primary_user }}"
   no_log: true
 
+- name: Install SSH keypairs
+  copy:
+    content: "{{ ssh_keypairs.data }}"
+    dest: "~/.ssh/config/{{ ssh_keypairs.file }}"
+    mode: 0600
+  with_items: "{{ ssh_keypairs }}"
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
+  no_log: true
+
 - name: Install Android development tools
   apt:
     update-cache: yes
