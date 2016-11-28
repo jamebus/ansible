@@ -151,7 +151,7 @@
 - name: Install SSH keypairs
   copy:
     content: "{{ item.data }}"
-    dest: "~/.ssh/config/{{ item.file }}"
+    dest: "~/.ssh/{{ item.file }}"
     mode: 0600
   with_items: ssh_keypairs
   sudo: yes
