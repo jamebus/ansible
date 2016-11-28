@@ -128,8 +128,9 @@
     - gitg
 
 - name: Create SSH directory
-  dest: ~/.ssh
-  mode: 0700
-  state: directory
+  file:
+    dest: ~/.ssh
+    mode: 0700
+    state: directory
   sudo: yes
   sudo_user: "{{ primary_user }}"
