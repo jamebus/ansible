@@ -1,6 +1,6 @@
 ---
 - name: Import secrets
-  include_vars: development_vault.yml
+  include_vars: vault.yml
   no_log: true
 
 - name: Install mtr-tiny
