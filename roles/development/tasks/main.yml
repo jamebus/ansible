@@ -158,6 +158,14 @@
   sudo_user: "{{ primary_user }}"
   no_log: true
 
+- name: Install SSH agent helper
+  copy:
+    source: start-agent
+    dest: ~/.ssh/start-agent
+    mode: 0600
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
+
 - name: Install Android development tools
   apt:
     update-cache: yes

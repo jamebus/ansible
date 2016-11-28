@@ -1,3 +1,10 @@
-#!/bin/sh
+#
+# Start SSH agent and add keys
+#
 
-set -exu
+if [ -z "$SSH_AGENT_PID" ]; then
+	eval $(ssh-agent -s)
+	for f in *.pub; do
+		ssh-add "${f%.pub}"
+	done
+fi
