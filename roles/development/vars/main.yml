@@ -1,2 +1,2 @@
 ---
-ssh_config: {{ vault_ssh_config }}
+ssh_config: "{{ vault_ssh_config }}"
