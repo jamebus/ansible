@@ -147,3 +147,12 @@
   sudo: yes
   sudo_user: "{{ primary_user }}"
   no_log: true
+
+- name: Install Android development tools
+  apt:
+    update-cache: yes
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - android-tools-fastboot
+    - android-tools-adb
