@@ -1,4 +1,8 @@
 ---
+- name: Import secrets
+  include_vars: development_vault.yml
+  no_log: true
+
 - name: Install mtr-tiny
   apt:
     update-cache: yes
@@ -134,3 +138,12 @@
     state: directory
   sudo: yes
   sudo_user: "{{ primary_user }}"
+
+- name: Install SSH configuration
+  copy:
+    content: "{{ ssh_config }}"
+    dest: ~/.ssh/config
+    mode: 0600
+  sudo: yes
+  sudo_user: "{{ primary_user }}"
+  no_log: true
