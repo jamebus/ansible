@@ -160,7 +160,7 @@
 
 - name: Install SSH agent helper
   copy:
-    source: start-agent
+    src: start-agent
     dest: ~/.ssh/start-agent
     mode: 0600
   sudo: yes
