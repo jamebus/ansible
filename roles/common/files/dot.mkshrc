@@ -53,6 +53,8 @@ fi
 PS1=$p$'\r${debian_chroot:+'$p$'\e[0;1m'$p'($debian_chroot)'$p$'\e[0m'$p'}'$PS1
 unset p
 
+echo -ne "\033]0;chroot: ${debian_chroot}\007"
+
 test -f ~/.ssh/start-agent && . ~/.ssh/start-agent
 
 # vim:ft=sh
