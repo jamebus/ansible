@@ -55,6 +55,6 @@ unset p
 
 echo -ne "\033]0;chroot: ${debian_chroot}\007"
 
-test -f ~/.ssh/start-agent && . ~/.ssh/start-agent
+test -f ~/.ssh/start-agent && . ~/.ssh/start-agent || true
 
 # vim:ft=sh
