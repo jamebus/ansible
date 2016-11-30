@@ -153,7 +153,7 @@
     content: "{{ item.data }}"
     dest: "~/.ssh/{{ item.file }}"
     mode: 0600
-  with_items: vault_ssh_keypairs
+  with_items: ssh_keypairs
   sudo: yes
   sudo_user: "{{ primary_user }}"
   no_log: true
