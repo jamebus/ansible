@@ -1,7 +1,7 @@
 ---
 - name: Import secrets
   include_vars: vault.yml
-  no_log: true
+#  no_log: true
 
 - name: Install mtr-tiny
   apt:
