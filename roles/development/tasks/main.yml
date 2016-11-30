@@ -3,8 +3,6 @@
   include_vars: vault.yml
   no_log: true
 
-- debug: var=ssh_keypairs
-
 - name: Install mtr-tiny
   apt:
     update-cache: yes
