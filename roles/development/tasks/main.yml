@@ -156,7 +156,7 @@
   with_items: vault_ssh_keypairs
   sudo: yes
   sudo_user: "{{ primary_user }}"
-  no_log: true
+#  no_log: true
 
 - name: Install SSH agent helper
   copy:
