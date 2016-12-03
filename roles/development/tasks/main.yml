@@ -89,7 +89,7 @@
   when: atom_installed.stderr.find('no packages found') != -1
 
 - name: Install Atom packages
-  command: apm install {{ item }} creates=~/.atom/packages/{{ item }}
+  command: "apm install {{ item }}" creates="~/.atom/packages/{{ item }}"
   with_items:
     - auto-detect-indentation
     - highlight-selected
