@@ -81,7 +81,7 @@
 - name: Download Atom
   # Use wget(1) instead because Python in jessie is too old to support
   # SNI, causing the download to fail
-  command: wget -nv -O /tmp/atom.deb https://atom.io/download/deb
+  command: "wget -nv -O {{ tmpdir_path }}/atom.deb https://atom.io/download/deb"
   when: atom_installed.stderr.find('no packages found') != -1
 
 - name: Install Atom
