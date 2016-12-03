@@ -97,6 +97,7 @@
     - open-recent
     - todo-show
     - git-plus
+    - sort-lines
   sudo: yes
   sudo_user: "{{ primary_user }}"
 
