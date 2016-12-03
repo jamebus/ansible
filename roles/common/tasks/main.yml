@@ -58,8 +58,8 @@
     - .bashrc
     - .bash_history
     - .bash_logout
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Set shell of primary user
   user: name="{{ primary_user }}" shell=/bin/mksh
@@ -69,8 +69,8 @@
   with_items:
     - { src: 'dot.profile', dest: '.profile' }
     - { src: 'dot.mkshrc', dest: '.mkshrc' }
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 - name: Install vim
   apt:
     update-cache: yes
@@ -83,8 +83,8 @@
     - { src: 'dot.vimrc', dest: '.vimrc' }
     - { src: 'dot.vim/uri-ref-20061101.vim', dest: '.vim/' }
     - { src: 'dot.vim/indent/mail.vim', dest: '.vim/indent/' }
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install less
   apt:

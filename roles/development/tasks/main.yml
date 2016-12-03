@@ -55,13 +55,13 @@
   changed_when: false
   failed_when: false
   ignore_errors: yes
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Configure git
   command: git config --global push.default simple
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
   when: gitconfig_push.stdout != 'simple'
 
 - name: Install libxss1 (missing from Atom's dependencies)
@@ -98,13 +98,13 @@
     - todo-show
     - git-plus
     - sort-lines
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install Atom configuration
   copy: src=config.cson dest=~/.atom/config.cson
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install programming languages
   apt:
@@ -137,16 +137,16 @@
     dest: ~/.ssh
     mode: 0700
     state: directory
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install SSH configuration
   copy:
     content: "{{ ssh_config }}"
     dest: ~/.ssh/config
     mode: 0600
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
   no_log: true
 
 - name: Install SSH keypairs
@@ -155,8 +155,8 @@
     dest: "~/.ssh/{{ item.file }}"
     mode: 0600
   with_items: "{{ ssh_keypairs }}"
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
   no_log: true
 
 - name: Install SSH agent helper
@@ -164,8 +164,8 @@
     src: start-agent
     dest: ~/.ssh/start-agent
     mode: 0600
-  sudo: yes
-  sudo_user: "{{ primary_user }}"
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install Android development tools
   apt:
