@@ -1,0 +1,12 @@
+---
+- name: Install GIMP
+  apt:
+    update-cache: yes
+    name: gimp
+    state: present
+
+- name: Install ImageMagick
+  apt:
+    update-cache: yes
+    name: imagemagick
+    state: present
