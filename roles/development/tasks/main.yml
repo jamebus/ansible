@@ -124,6 +124,7 @@
   with_items:
     - httpie
     - jq
+    - uuid-runtime
 
 - name: Install source control tools
   apt:
