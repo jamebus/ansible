@@ -39,6 +39,22 @@
     line: XARGS="$XARGS -dpi {{ xserver_dpi }}x{{ xserver_dpi }}"
   when: xserverrclocal.stat.exists
 
+- stat: path=/usr/local/bin/xiwi
+  register: xiwi
+
+- name: Install xinput
+  apt:
+    update-cache: yes
+    name: xinput
+    state: present
+  when: xiwi.stat.exists
+
+- name: Install xiwi user configuration
+  copy: src=dot.xiwirc dest=~/.xiwirc
+  when: xiwi.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
+
 - name: Add Backups share
   lineinfile:
     dest: /etc/crouton/shares
