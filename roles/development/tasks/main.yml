@@ -94,12 +94,13 @@
     creates: "~/.atom/packages/{{ item }}"
   with_items:
     - auto-detect-indentation
+    - git-plus
     - highlight-selected
     - minimap
     - open-recent
-    - todo-show
-    - git-plus
     - sort-lines
+    - terminal-fusion
+    - todo-show
   become: yes
   become_user: "{{ primary_user }}"
 
