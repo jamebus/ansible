@@ -28,7 +28,7 @@
   become_user: "{{ primary_user }}"
 
 - name: Configure TeamViewer dpi
-  command: "./teamviewer regedit {{ tmpdir_path }}/dpi.reg"
+  command: "env=1000 ./teamviewer regedit {{ tmpdir_path }}/dpi.reg"
   args:
     chdir: ~/teamviewer
   become: yes
