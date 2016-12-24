@@ -1,4 +1,10 @@
 ---
+- name: Adjust ownership of tmpdir
+  file:
+    path: "{{ tmpdir_path }}"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_user }}"
+
 - stat: path=~/teamviewer
   register: teamviewer
   become: yes
@@ -9,6 +15,8 @@
     url: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
     dest: "{{ tmpdir_path }}/teamviewer_i386.tar.xz"
   when: not teamviewer.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install TeamViewer
   command: tar xvfJ "{{ tmpdir_path }}/teamviewer_i386.tar.xz"
