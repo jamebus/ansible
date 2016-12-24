@@ -5,8 +5,9 @@
   become_user: "{{ primary_user }}"
 
 - name: Install TeamViewer
-  src: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
-  dest: ~
+  unarchive:
+    src: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
+    dest: ~
   when: not teamviewer.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
