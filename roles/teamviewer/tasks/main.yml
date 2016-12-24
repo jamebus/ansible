@@ -9,8 +9,6 @@
     url: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
     dest: "{{ tmpdir_path }}/teamviewer_i386.tar.xz"
   when: not teamviewer.stat.exists
-  become: yes
-  become_user: "{{ primary_user }}"
 
 - name: Install TeamViewer
   command: tar xvfJ "{{ tmpdir_path }}/teamviewer_i386.tar.xz"
