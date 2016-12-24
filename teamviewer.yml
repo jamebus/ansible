@@ -1,0 +1,8 @@
+---
+- include: base.yml
+
+- name: TeamViewer
+  hosts: all
+  roles:
+    - tmpdir
+    - teamviewer
