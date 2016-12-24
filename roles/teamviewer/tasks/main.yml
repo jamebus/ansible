@@ -1,4 +1,10 @@
 ---
+- name: Adjust ownership of tmpdir
+  file:
+    path: "{{ tmpdir_path }}"
+    owner: "{{ primary_user }}"
+    group: "{{ primary_user }}"
+
 - stat: path=~/teamviewer
   register: teamviewer
   become: yes
@@ -11,5 +17,17 @@
     dest: "/home/{{ primary_user }}"
     remote_src: yes
   when: not teamviewer.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Copy dpi configuration
+  copy:
+    src: dpi.reg
+    dest: {{ tmpdir_path }}
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Configure TeamViewer dpi
+  command: ~/teamviewer/teamviewer regedit "{{tmpdir_path/dpi.reg}}"
   become: yes
   become_user: "{{ primary_user }}"
