@@ -8,6 +8,7 @@
   unarchive:
     src: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
     dest: ~
+    remote_src: yes
   when: not teamviewer.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
