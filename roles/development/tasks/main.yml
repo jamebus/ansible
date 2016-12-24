@@ -77,7 +77,6 @@
   failed_when: false
   ignore_errors: yes
 
-# TODO: Create a proper tmpdir for this
 - name: Download Atom
   # Use wget(1) instead because Python in jessie is too old to support
   # SNI, causing the download to fail
