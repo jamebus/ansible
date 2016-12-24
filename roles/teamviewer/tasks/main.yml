@@ -7,6 +7,7 @@
 - name: Install TeamViewer
   unarchive:
     src: https://download.teamviewer.com/download/teamviewer_i386.tar.xz
+    # Can't use ~ as dest
     dest: "/home/{{ primary_user }}"
     remote_src: yes
   when: not teamviewer.stat.exists
