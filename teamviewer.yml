@@ -4,5 +4,4 @@
 - name: TeamViewer
   hosts: all
   roles:
-    - tmpdir
     - teamviewer
