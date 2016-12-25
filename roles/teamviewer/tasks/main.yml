@@ -1,10 +1,4 @@
 ---
-- name: Adjust ownership of tmpdir
-  file:
-    path: "{{ tmpdir_path }}"
-    owner: "{{ primary_user }}"
-    group: "{{ primary_user }}"
-
 - stat: path=~/teamviewer
   register: teamviewer
   become: yes
@@ -20,19 +14,20 @@
   become: yes
   become_user: "{{ primary_user }}"
 
-- name: Copy dpi configuration
+- name: Install dpi tweak
   copy:
     src: dpi.reg
-    dest: "{{ tmpdir_path }}"
+    dest: ~/teamviewer/tv_bin/script
   become: yes
   become_user: "{{ primary_user }}"
 
-# - name: Configure TeamViewer dpi
-#   command: "env UID=1000 ./teamviewer regedit {{ tmpdir_path }}/dpi.reg"
-#   args:
-#     chdir: ~/teamviewer
-#   become: yes
-#   become_user: "{{ primary_user }}"
+- name: Patch dpi tweak
+  patch:
+    src: tvw_profile_legacy.patch
+    dest: ~/teamviewer/tv_bin/script
+    remote_src: yes
+  become: yes
+  become_user: "{{ primary_user }}"
 
 - name: Install desktop icon
   copy:

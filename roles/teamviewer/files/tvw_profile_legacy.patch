@@ -1,0 +1,10 @@
+--- tvw_profile_legacy.orig	2016-11-28 08:30:08.000000000 -0600
++++ tvw_profile_legacy	2016-12-24 22:12:50.404764004 -0600
+@@ -96,6 +96,7 @@
+   winetweak no_xrandr		# Disable XRandR (causes problems with some drivers)
+   winetweak no_fileassocs	# Disable synchronizing of file associations and menu entries
+ #  winetweak setwinver		# Set Win2k mode for TeamViewer
++  winetweak dpi			# Set dpi for HiDPI
+ 
+   if [ "$tweakdir" != "$TV_SCRIPT_DIR" ]; then
+     rm "$tweakdir"
