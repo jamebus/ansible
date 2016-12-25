@@ -38,3 +38,5 @@
   copy:
     src: teamviewer.desktop
     dest: ~/Desktop
+  become: yes
+  become_user: "{{ primary_user }}"
