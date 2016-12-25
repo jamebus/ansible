@@ -123,7 +123,7 @@
 
 - name: Install LXDE OpenBox configuration
   copy: src=/etc/xdg/openbox/LXDE/rc.xml dest=~/.config/openbox/lxde-rc.xml
-  when: startlxde.stat.present
+  when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
@@ -132,18 +132,18 @@
     src: LXDE/lxde-rc.xml.patch
     # Can't use ~ as dest
     dest: "/home/{{ primary_user }}/.config/openbox/lxde-rc.xml"
-  when: startlxde.stat.present
+  when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
 - name: Install LXDE configuration
   copy: src=LXDE/desktop.conf dest=~/.config/lxsession/LXDE
-  when: startlxde.stat.present
+  when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
 - name: Install clipit configuration
   copy: src=LXDE/clipitrc dest=~/.config/clipit/clipitrc
-  when: startlxde.stat.present
+  when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
