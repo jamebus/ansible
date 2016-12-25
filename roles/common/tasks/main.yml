@@ -113,7 +113,7 @@
 
 - name: Create LXDE configuration directories
   file: path={{ item }} state=directory
-  - with_items:
+  with_items:
     - ~/.config/openbox
     - ~/.config/lxsession/LXDE
     - ~/.config/clipit
