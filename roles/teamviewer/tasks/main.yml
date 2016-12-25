@@ -24,7 +24,7 @@
 - name: Patch dpi tweak
   patch:
     src: tvw_profile_legacy.patch
-    dest: ~/teamviewer/tv_bin/script
+    dest: ~/teamviewer/tv_bin/script/tvw_profile_legacy
   become: yes
   become_user: "{{ primary_user }}"
 
