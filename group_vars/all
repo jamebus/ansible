@@ -1,3 +1,5 @@
 primary_user: bus
 primary_user_uid: 1000
 xserver_dpi: 150
+# also 150 dpi
+teamviewer_logpixels: dword:00000096

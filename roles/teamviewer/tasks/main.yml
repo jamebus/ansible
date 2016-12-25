@@ -15,9 +15,9 @@
   become_user: "{{ primary_user }}"
 
 - name: Install dpi tweak
-  copy:
-    src: dpi.reg
-    dest: ~/teamviewer/tv_bin/script
+  template:
+    src: dpi.reg.j2
+    dest: ~/teamviewer/tv_bin/script/dpi.reg
   become: yes
   become_user: "{{ primary_user }}"
 
