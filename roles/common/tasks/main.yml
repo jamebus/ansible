@@ -107,3 +107,43 @@
     update-cache: yes
     name: less
     state: present
+
+- stat: path=/usr/local/bin/startlxde
+  register: startlxde
+
+- name: Create LXDE configuration directories
+  file: path={{ item }} state=directory
+  - with_items:
+    - ~/.config/openbox
+    - ~/.config/lxsession/LXDE
+    - ~/.config/clipit
+  when: startlxde.stat.present
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Install LXDE OpenBox configuration
+  copy: src=/etc/xdg/openbox/LXDE/rc.xml dest=~/.config/openbox/lxde-rc.xml
+  when: startlxde.stat.present
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Patch LXDE OpenBox configuration
+  patch:
+    src: LXDE/lxde-rc.xml.patch
+    # Can't use ~ as dest
+    dest: "/home/{{ primary_user }}/.config/openbox/lxde-rc.xml"
+  when: startlxde.stat.present
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Install LXDE configuration
+  copy: src=LXDE/desktop.conf dest=~/.config/lxsession/LXDE
+  when: startlxde.stat.present
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Install clipit configuration
+  copy: src=LXDE/clipitrc dest=~/.config/clipit/clipitrc
+  when: startlxde.stat.present
+  become: yes
+  become_user: "{{ primary_user }}"

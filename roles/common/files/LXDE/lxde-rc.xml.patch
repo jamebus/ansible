@@ -1,0 +1,11 @@
+--- /etc/xdg/openbox/LXDE/rc.xml	2014-10-25 01:28:30.000000000 -0500
++++ lxde-rc.xml	2016-12-25 11:51:43.862495003 -0600
+@@ -42,7 +39,7 @@
+ </placement>
+
+ <theme>
+-  <name>Onyx</name>
++  <name>Nightmare-03</name>
+   <titleLayout>NLIMC</titleLayout>
+   <!--
+       available characters are NDSLIMC, each can occur at most once.
