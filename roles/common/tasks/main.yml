@@ -117,7 +117,7 @@
     - ~/.config/openbox
     - ~/.config/lxsession/LXDE
     - ~/.config/clipit
-  when: startlxde.stat.present
+  when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
