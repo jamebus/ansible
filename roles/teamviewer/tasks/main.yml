@@ -21,11 +21,28 @@
   become: yes
   become_user: "{{ primary_user }}"
 
+# TeamViewer 12 has teamviewer/tv_bin/script/tvw_profile_legacy
+# 11 has just teamviewer/tv_bin/script/tvw_profile
+- stat: path=~/teamviewer/tv_bin/script/tvw_profile_legacy
+  register: tvw_profile_legacy
+  become: yes
+  become_user: "{{ primary_user }}"
+
 - name: Patch dpi tweak
   patch:
-    src: tvw_profile_legacy.patch
+    src: tvw_dpi_tweak.patch
     # Can't use ~ as dest
     dest: "/home/{{ primary_user }}/teamviewer/tv_bin/script/tvw_profile_legacy"
+  when: tvw_profile_legacy.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Patch dpi tweak (old versions)
+  patch:
+    src: tvw_dpi_tweak.patch
+    # Can't use ~ as dest
+    dest: "/home/{{ primary_user }}/teamviewer/tv_bin/script/tvw_profile"
+  when: not tvw_profile_legacy.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
