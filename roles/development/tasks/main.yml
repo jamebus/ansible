@@ -9,6 +9,12 @@
     name: mtr-tiny
     state: present
 
+- name: Install fping
+  apt:
+    update-cache: yes
+    name: fping
+    state: present
+
 - name: Install whois
   apt:
     update-cache: yes
