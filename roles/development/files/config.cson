@@ -13,6 +13,13 @@
     showInvisibles: true
   "exception-reporting":
     userId: "e9e9e2b3-e6b8-33e6-5723-db66830b13da"
+  "git-plus":
+    general:
+      _analyticsUserId: "d0fc1945-edb1-47e0-b497-da34611280ec"
+  minimap:
+    plugins:
+      "split-diff": true
+      "split-diffDecorationsZIndex": 0
   "terminal-fusion":
     style:
       fontSize: "14"
