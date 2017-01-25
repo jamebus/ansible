@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+# Correct vertical scrolling to match ChomeOS
+#                                                 Flipping these  V V
+Exec=xinput set-button-map 'Virtual core XTEST pointer' 1 2 3 4 5 7 6 8 9 10

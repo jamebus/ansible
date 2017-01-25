@@ -42,16 +42,33 @@
 - stat: path=/usr/local/bin/xiwi
   register: xiwi
 
+- stat: path=~/.config
+  register: xdgconfig
+  become: yes
+  become_user: "{{ primary_user }}"
+
 - name: Install xinput
   apt:
     update-cache: yes
     name: xinput
     state: present
-  when: xiwi.stat.exists
+  when: xiwi.stat.exists or xdgconfig.stat.exists
 
 - name: Install xiwi user configuration
   copy: src=dot.xiwirc dest=~/.xiwirc
   when: xiwi.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Create XDG autostart directory
+  file: path=~/.config/autostart state=directory
+  when: xdgconfig.stat.exists
+  become: yes
+  become_user: "{{ primary_user }}"
+
+- name: Install vertical scrolling fix
+  copy: src=vertical-scrolling.desktop dest=~/.config/autostart
+  when: xdgconfig.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
