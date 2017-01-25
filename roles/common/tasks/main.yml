@@ -138,12 +138,14 @@
   become: yes
   become_user: "{{ primary_user }}"
 
+# TODO: This will run every time
 - name: Install LXDE OpenBox configuration
   copy: src=/etc/xdg/openbox/LXDE/rc.xml dest=~/.config/openbox/lxde-rc.xml
   when: startlxde.stat.exists
   become: yes
   become_user: "{{ primary_user }}"
 
+# TODO: This will run every time
 - name: Patch LXDE OpenBox configuration
   patch:
     src: LXDE/lxde-rc.xml.patch
