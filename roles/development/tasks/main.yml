@@ -112,7 +112,10 @@
   become_user: "{{ primary_user }}"
 
 - name: Install Atom configuration
-  copy: src=config.cson dest=~/.atom/config.cson mode=0644
+  copy: src="{{ item }}" dest="~/.atom/{{ item }}" mode=0644
+  with_items:
+    - config.cson
+    - keymap.cson
   become: yes
   become_user: "{{ primary_user }}"
 
