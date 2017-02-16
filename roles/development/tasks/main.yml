@@ -111,7 +111,7 @@
   become: yes
   become_user: "{{ primary_user }}"
 
--name: Remove deprecated/obsolete Atom packages
+- name: Remove deprecated/obsolete Atom packages
   command: "apm uninstall {{ item }}"
   args:
     removes: "~/.atom/packages/{{ item }}"
