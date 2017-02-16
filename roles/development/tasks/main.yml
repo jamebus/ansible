@@ -104,11 +104,19 @@
     - highlight-selected
     - minimap
     - minimap-split-diff
-    - open-recent
     - sort-lines
     - split-diff
     - terminal-fusion
     - todo-show
+  become: yes
+  become_user: "{{ primary_user }}"
+
+-name: Remove deprecated/obsolete Atom packages
+  command: "apm uninstall {{ item }}"
+  args:
+    removes: "~/.atom/packages/{{ item }}"
+  with_items:
+    - open-recent
   become: yes
   become_user: "{{ primary_user }}"
 
