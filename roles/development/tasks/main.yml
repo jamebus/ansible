@@ -206,3 +206,16 @@
     dest: /usr/local/bin/smtp-cli
     mode: 0555
     checksum: sha512:187c2d5bf2e8f2d388adb2aa5e7335675b99ea0898d40af19d00a3f680edb3488e7f9061b1cdae67d6562ddf9a4d5f1ec325f2b2be0750b4b431e02ee403b143
+
+- name: Install smtp-cli runtime dependencies
+  apt:
+    update-cache: yes
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - libio-socket-ssl-perl
+    - libio-socket-inet6-perl
+    - libmime-lite-perl
+    - libfile-libmagic-perl
+    - libfile-type-perl
+    - libterm-readkey-perl
