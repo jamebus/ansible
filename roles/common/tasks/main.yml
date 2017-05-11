@@ -20,6 +20,11 @@
   command: locale-gen --lang en_US.UTF-8
   when: localegen.changed or not localearchive.stat.exists
 
+- name: Make sure xserver-xorg-legacy is not present
+  apt:
+    name: xserver-xorg-legacy
+    state: absent
+
 - stat: path=/etc/crouton/xserverrc-local.example
   register: xserverrclocalexample
 - stat: path=/etc/crouton/xserverrc-local
