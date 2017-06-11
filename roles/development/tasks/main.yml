@@ -99,6 +99,7 @@
     creates: "~/.atom/packages/{{ item }}"
   with_items:
     - auto-detect-indentation
+    - editorconfig
     - file-icons
     - git-plus
     - highlight-selected
